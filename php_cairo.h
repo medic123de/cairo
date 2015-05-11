@@ -83,6 +83,12 @@ typedef struct _cairo_glyph_object {
 	cairo_glyph_t *glyph;
 } cairo_glyph_object;
 
+typedef struct _pecl_ft_container {
+	FT_Library ft_lib;
+    FT_Face ft_face;
+    FT_Stream ft_stream;
+} pecl_ft_container;
+
 typedef struct _cairo_context_object {
 	zend_object std;
 	zval *surface;
@@ -138,6 +144,7 @@ typedef struct _cairo_font_face_object {
 typedef struct _cairo_ft_font_face_object {
 	zend_object std;
 	cairo_font_face_t *font_face;
+    stream_closure *closure;
 	FT_Library ft_lib;
 	FT_Stream ft_stream;
 	FT_Face ft_face;
